@@ -1,6 +1,6 @@
 local utils = require("utils")
 
-local maps = { n = {}, v = {} }
+local maps = { n = {}, v = {}, t = {} }
 
 maps.n['<leader>w'] = {
   ':w<cr>',
@@ -63,5 +63,9 @@ maps.n['<A-l>'] = { "<cmd>BufferLineCycleNext<cr>", { desc = "Cycle to next buff
 
 -- Delete buffer
 maps.n["<leader>c"] = { "<cmd>bdelete<cr>", { desc = "Close buffer" } }
+
+
+-- Toggleterm
+maps.t["<esc>"] = { "<C-\\><C-n>", desc = "Terminal normal mode" }
 
 utils.set_keymaps(maps)

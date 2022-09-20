@@ -46,8 +46,14 @@ return require('packer').startup(function(use)
   -- Better escape
   use {
     "max397574/better-escape.nvim",
+    event = "InsertCharPre",
     config = function()
-      require("better_escape").setup()
+      require("better_escape").setup({
+        mapping = { "jj", "jk" },
+        timeout = vim.o.timeoutlen,
+        clear_empty_lines = false,
+        keys = "<Esc>"
+      })
     end
   }
 
