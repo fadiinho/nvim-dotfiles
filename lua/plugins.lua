@@ -42,4 +42,12 @@ return require('packer').startup(function(use)
     "akinsho/toggleterm.nvim",
     tag = "*"
   }
+
+  -- Better escape
+  use {
+    "max397574/better-escape.nvim",
+    config = function()
+      require("better-escape").setup()
+    end
+  }
 end)
