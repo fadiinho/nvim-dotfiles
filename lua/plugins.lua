@@ -50,4 +50,10 @@ return require('packer').startup(function(use)
       require("better-escape").setup()
     end
   }
+
+
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ":TSUpdate",
+  }
 end)
