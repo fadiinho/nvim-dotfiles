@@ -68,4 +68,11 @@ maps.n["<leader>c"] = { "<cmd>bdelete<cr>", { desc = "Close buffer" } }
 -- Toggleterm
 maps.t["<esc>"] = { "<C-\\><C-n>", desc = "Terminal normal mode" }
 
+-- Commenting
+maps.n["<leader>/"] = { function() require("Comment.api").toggle.linewise.current() end, { desc = "Comment line" } }
+maps.v["<leader>/"] = {
+  "<esc><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<cr>",
+  { desc = "Toggle comment line" }
+}
+
 utils.set_keymaps(maps)

@@ -69,4 +69,15 @@ return require('packer').startup(function(use)
     tag = "v2.*",
     requires = 'kyazdani42/nvim-web-devicons'
   }
+
+  -- Commenting
+  use {
+    "numToStr/Comment.nvim",
+    module = { "Comment", "Comment.api" }
+  }
+
+  use {
+    "JoosepAlviste/nvim-ts-context-commentstring",
+    after = "nvim-treesitter"
+  }
 end)
