@@ -53,4 +53,8 @@ maps.n["<S-h>"] = { ":< <cr>", { desc = "unindent line" }}
 maps.v["<S-l>"] = { ">gv", { desc = "indent line" }}
 maps.v["<S-h>"] = { "<gv", { desc = "unindent line" }}
 
+-- Neotree
+maps.n["<leader>e"] = { "<cmd>Neotree toggle<cr>", { desc = "Toggle Explorer" }}
+maps.n["<leader>o"] = { "<cmd>Neotree focus<cr>", { desc = "Focus Explorer" }}
+
 utils.set_keymaps(maps)

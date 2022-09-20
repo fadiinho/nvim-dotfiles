@@ -20,7 +20,8 @@ local settings = {
     tabstop = 2,
     termguicolors = true,
     undofile = true,
-    timeoutlen = 300
+    timeoutlen = 300,
+    wrap = false
   },
   g = {
     mapleader = " "
