@@ -47,13 +47,20 @@ return require('packer').startup(function(use)
   use {
     "max397574/better-escape.nvim",
     config = function()
-      require("better-escape").setup()
+      require("better_escape").setup()
     end
   }
 
-
+  -- Treesitter
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ":TSUpdate",
+  }
+
+  -- Bufferline
+  use {
+    'akinsho/bufferline.nvim',
+    tag = "v2.*",
+    requires = 'kyazdani42/nvim-web-devicons'
   }
 end)

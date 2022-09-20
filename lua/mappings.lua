@@ -1,15 +1,15 @@
 local utils = require("utils")
 
-maps =  { n = { }, v = { } }
+local maps = { n = {}, v = {} }
 
 maps.n['<leader>w'] = {
   ':w<cr>',
-  { desc = "Save buffer" } 
+  { desc = "Save buffer" }
 }
 
 maps.n['<leader>q'] = {
   ':q<cr>',
-  { desc = "Quit buffer" } 
+  { desc = "Quit buffer" }
 }
 
 -- Duplicate lines
@@ -47,14 +47,21 @@ maps.n['<a-j>'] = {
 }
 
 -- Indentation
-maps.n["<S-l>"] = { ":> <cr>", { desc = "indent line" }}
-maps.n["<S-h>"] = { ":< <cr>", { desc = "unindent line" }}
+maps.n["<S-l>"] = { ":> <cr>", { desc = "indent line" } }
+maps.n["<S-h>"] = { ":< <cr>", { desc = "unindent line" } }
 
-maps.v["<S-l>"] = { ">gv", { desc = "indent line" }}
-maps.v["<S-h>"] = { "<gv", { desc = "unindent line" }}
+maps.v["<S-l>"] = { ">gv", { desc = "indent line" } }
+maps.v["<S-h>"] = { "<gv", { desc = "unindent line" } }
 
 -- Neotree
-maps.n["<leader>e"] = { "<cmd>Neotree toggle<cr>", { desc = "Toggle Explorer" }}
-maps.n["<leader>o"] = { "<cmd>Neotree focus<cr>", { desc = "Focus Explorer" }}
+maps.n["<leader>e"] = { "<cmd>Neotree toggle<cr>", { desc = "Toggle Explorer" } }
+maps.n["<leader>o"] = { "<cmd>Neotree focus<cr>", { desc = "Focus Explorer" } }
+
+-- Bufferline
+maps.n['<A-h>'] = { "<cmd>BufferLineCyclePrev<cr>", { desc = "Cycle to prev buffer" } }
+maps.n['<A-l>'] = { "<cmd>BufferLineCycleNext<cr>", { desc = "Cycle to next buffer" } }
+
+-- Delete buffer
+maps.n["<leader>c"] = { "<cmd>bdelete<cr>", { desc = "Close buffer" } }
 
 utils.set_keymaps(maps)
