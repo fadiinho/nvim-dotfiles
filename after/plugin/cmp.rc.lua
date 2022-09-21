@@ -1,35 +1,37 @@
-local status, cmp = pcall(require, 'cmp')
-if not status then return end
+local status, cmp = pcall(require, "cmp")
+if not status then
+  return
+end
 
-local luasnip = require('luasnip')
-local lspkind = require('lspkind')
+local luasnip = require "luasnip"
+local lspkind = require "lspkind"
 
 local function has_words_before()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match "%s" == nil
 end
 
-cmp.setup({
+cmp.setup {
   formatting = {
-    format = lspkind.cmp_format({
-      mode = 'symbol',
+    format = lspkind.cmp_format {
+      mode = "symbol",
       maxwidth = 50,
       before = function(_, vim_item)
         return vim_item
-      end
-    })
+      end,
+    },
   },
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
-    end
+    end,
   },
-  mapping = cmp.mapping.preset.insert({
-    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.abort(),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+  mapping = cmp.mapping.preset.insert {
+    ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+    ["<C-f>"] = cmp.mapping.scroll_docs(4),
+    ["<C-Space>"] = cmp.mapping.complete(),
+    ["<C-e>"] = cmp.mapping.abort(),
+    ["<CR>"] = cmp.mapping.confirm { select = true },
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
@@ -44,7 +46,7 @@ cmp.setup({
       end
     end, {
       "i",
-      "s"
+      "s",
     }),
     ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
@@ -57,15 +59,19 @@ cmp.setup({
     end, {
       "i",
       "s",
-    })
-  }),
+    }),
+  },
   sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    { name = 'luasnip' }
-  }, { { name = 'buffer' } })
-})
+    { name = "nvim_lsp" },
+    { name = "luasnip" },
+  }, { { name = "buffer" } }),
+}
 
--- local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
--- require('lspconfig')['sumneko_lua'].setup{
---   capabilities = capabilities
--- }
+local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+require("lspconfig").sumneko_lua.setup {
+  capabilities = capabilities,
+}
+
+require("lspconfig").pyright.setup {
+  capabilities = capabilities,
+}
