@@ -17,7 +17,7 @@ null_ls.setup({
 				"html",
 			},
 		}),
-		null_ls.formatting.rome.with({
+		null_ls.builtins.formatting.rome.with({
 			prefer_local = true,
 			filetypes = { "javascript", "typescript" },
 		}),
