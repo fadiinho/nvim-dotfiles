@@ -80,4 +80,7 @@ return require('packer').startup(function(use)
     "JoosepAlviste/nvim-ts-context-commentstring",
     after = "nvim-treesitter"
   }
+
+  -- Autopairs
+  use "windwp/nvim-autopairs"
 end)
