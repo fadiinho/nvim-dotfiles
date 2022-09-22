@@ -108,4 +108,9 @@ return require("packer").startup(function(use)
     "feline-nvim/feline.nvim",
     requires = { "lewis6991/gitsigns.nvim" },
   }
+
+  -- Color Highlight #f0f0f0
+  use {
+    "norcalli/nvim-colorizer.lua",
+  }
 end)
