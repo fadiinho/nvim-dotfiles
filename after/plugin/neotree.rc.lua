@@ -1,5 +1,7 @@
-local status, neotree = pcall(require, 'neo-tree')
-if not status then return end
+local status, neotree = pcall(require, "neo-tree")
+if not status then
+  return
+end
 
 vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticSignError" })
 vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSignWarn" })
@@ -8,9 +10,9 @@ vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSig
 
 neotree.setup {
   close_if_last_window = true,
-  popup_border_style = 'rounded',
+  popup_border_style = "rounded",
   enable_git_status = true,
-  enable_diagnostics = true,
+  enable_diagnostics = false,
   default_component_configs = {
     indent = {
       padding = 0,
@@ -64,6 +66,11 @@ neotree.setup {
     },
   },
   event_handlers = {
-    { event = "neo_tree_buffer_enter", handler = function(_) vim.opt_local.signcolumn = "auto" end },
+    {
+      event = "neo_tree_buffer_enter",
+      handler = function(_)
+        vim.opt_local.signcolumn = "auto"
+      end,
+    },
   },
 }
