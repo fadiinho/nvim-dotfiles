@@ -20,7 +20,7 @@ null_ls.setup {
     },
     null_ls.builtins.formatting.rome.with {
       prefer_local = true,
-      filetypes = { "javascript", "typescript" },
+      filetypes = { "javascript", "typescript", "typescriptreact", "javascriptreact" },
     },
     null_ls.builtins.formatting.black,
   },

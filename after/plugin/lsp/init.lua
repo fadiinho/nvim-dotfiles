@@ -81,6 +81,13 @@ require("lspconfig").pylsp.setup {
   end,
 }
 
+require("lspconfig").tsserver.setup {
+  on_attach = function(client, bufnr)
+    disable_formatting_and_attach(client, bufnr)
+  end,
+  filetypes = { "javascript", "typescript", "typescriptreact", "javascriptreact" },
+  cmd = { "typescript-language-server", "--stdio" },
+}
 require("lspconfig").sumneko_lua.setup {
   on_attach = function(client, bufnr)
     disable_formatting_and_attach(client, bufnr)
