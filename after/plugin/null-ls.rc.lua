@@ -18,6 +18,7 @@ null_ls.setup {
         "html",
       },
     },
+    null_ls.builtins.formatting.rustfmt,
     null_ls.builtins.formatting.rome.with {
       prefer_local = true,
       filetypes = { "javascript", "typescript", "typescriptreact", "javascriptreact" },

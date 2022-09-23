@@ -88,6 +88,10 @@ require("lspconfig").tsserver.setup {
   filetypes = { "javascript", "typescript", "typescriptreact", "javascriptreact" },
   cmd = { "typescript-language-server", "--stdio" },
 }
+
+require("lspconfig").rust_analyzer.setup {
+  on_attach = disable_formatting_and_attach,
+}
 require("lspconfig").sumneko_lua.setup {
   on_attach = function(client, bufnr)
     disable_formatting_and_attach(client, bufnr)
