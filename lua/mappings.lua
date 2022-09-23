@@ -2,6 +2,7 @@ local utils = require "utils"
 
 local maps = { n = {}, v = {}, t = {} }
 
+-- :)
 maps.n["<leader>w"] = {
   ":w<cr>",
   { desc = "Save buffer" },
@@ -10,6 +11,11 @@ maps.n["<leader>w"] = {
 maps.n["<leader>q"] = {
   ":q<cr>",
   { desc = "Quit buffer" },
+}
+
+maps.n["<C-a>"] = {
+  "gg<S-v>G",
+  { desc = "Select all buffer" },
 }
 
 -- Duplicate lines
