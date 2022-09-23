@@ -75,7 +75,7 @@ local function disable_formatting_and_attach(client, bufnr)
   on_attach(client, bufnr)
 end
 
-require("lspconfig").pylsp.setup {
+require("lspconfig").pyright.setup {
   on_attach = function(client, bufnr)
     disable_formatting_and_attach(client, bufnr)
   end,
