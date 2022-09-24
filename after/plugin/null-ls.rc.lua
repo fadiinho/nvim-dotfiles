@@ -20,8 +20,11 @@ null_ls.setup {
     },
     null_ls.builtins.formatting.rustfmt,
     null_ls.builtins.formatting.rome.with {
-      prefer_local = true,
+      prefer_local = "only_local",
       filetypes = { "javascript", "typescript", "typescriptreact", "javascriptreact" },
+      condition = function(utils)
+        return utils.root_has_file { "rome.json" }
+      end,
     },
     null_ls.builtins.formatting.black,
   },
