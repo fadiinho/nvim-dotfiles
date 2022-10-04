@@ -21,6 +21,7 @@ return require("packer").startup(function(use)
 
   -- Theme
   use "techygrrrl/techygrrrl-cmyk-colourrrs-neovim"
+  use "thedenisnikulin/vim-cyberpunk"
 
   -- LSP
   use "williamboman/mason.nvim"
@@ -34,9 +35,13 @@ return require("packer").startup(function(use)
   use "hrsh7th/cmp-path"
   use "hrsh7th/cmp-cmdline"
   use "hrsh7th/nvim-cmp"
+
   use "L3MON4D3/LuaSnip"
   use "saadparwaiz1/cmp_luasnip"
 
+  use "honza/vim-snippets"
+
+  use "rafamadriz/friendly-snippets"
   -- Terminal
   use {
     "akinsho/toggleterm.nvim",

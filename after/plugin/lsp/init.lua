@@ -58,12 +58,14 @@ local on_attach = function(client, bufnr)
   vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
 end
 
-local formatting_callback = function(client, bufnr)
-  vim.keymap.set("n", "<leader>f", function()
-    local params = vim.lsp.util.make_formatting_params {}
-    client.request("textDocument/formatting", params, nil, bufnr)
-  end, { buffer = bufnr })
-end
+local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+-- local formatting_callback = function(client, bufnr)
+--   vim.keymap.set("n", "<leader>f", function()
+--     local params = vim.lsp.util.make_formatting_params {}
+--     client.request("textDocument/formatting", params, nil, bufnr)
+--   end, { buffer = bufnr })
+-- end
 
 local function disable_formatting(client)
   client.resolved_capabilities.document_formatting = false
@@ -79,6 +81,7 @@ require("lspconfig").pyright.setup {
   on_attach = function(client, bufnr)
     disable_formatting_and_attach(client, bufnr)
   end,
+  capabilities = capabilities,
 }
 
 require("lspconfig").tsserver.setup {
@@ -87,11 +90,20 @@ require("lspconfig").tsserver.setup {
   end,
   filetypes = { "javascript", "typescript", "typescriptreact", "javascriptreact" },
   cmd = { "typescript-language-server", "--stdio" },
+  capabilities = capabilities,
 }
 
 require("lspconfig").rust_analyzer.setup {
   on_attach = disable_formatting_and_attach,
+  capabilities = capabilities,
 }
+
+require("lspconfig").html.setup {
+  on_attach = disable_formatting_and_attach,
+  provideFormatter = false,
+  capabilities = capabilities,
+}
+
 require("lspconfig").sumneko_lua.setup {
   on_attach = function(client, bufnr)
     disable_formatting_and_attach(client, bufnr)
@@ -109,4 +121,5 @@ require("lspconfig").sumneko_lua.setup {
       },
     },
   },
+  capabilities = capabilities,
 }
