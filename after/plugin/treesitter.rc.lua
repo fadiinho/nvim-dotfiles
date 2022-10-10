@@ -1,7 +1,9 @@
-local status, _ = pcall(require, 'nvim-treesitter')
-if not status then return end
+local status, _ = pcall(require, "nvim-treesitter")
+if not status then
+  return
+end
 
-require('nvim-treesitter.configs').setup {
+require("nvim-treesitter.configs").setup {
   ensure_installed = {
     "lua",
     "python",
@@ -16,11 +18,11 @@ require('nvim-treesitter.configs').setup {
     "css",
     "jsonc",
     "comment",
-    "bash"
+    "bash",
   },
   auto_install = true,
   highlight = {
-    enable = true
+    enable = true,
   },
   context_commentstring = {
     enable = true,
@@ -29,10 +31,14 @@ require('nvim-treesitter.configs').setup {
   rainbow = {
     enable = true,
     disable = { "html" },
-    extended_mode = false
+    extended_mode = false,
   },
-  autopairs = true,
-  autotag = true,
-  indent = false,
-  incremental_selection = true
+  autopairs = {
+    enable = true,
+  },
+  autotag = {
+    enable = true,
+  },
+  indent = { enable = false },
+  incremental_selection = true,
 }

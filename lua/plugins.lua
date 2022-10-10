@@ -88,6 +88,7 @@ return require("packer").startup(function(use)
 
   -- Autopairs
   use "windwp/nvim-autopairs"
+  use "windwp/nvim-ts-autotag"
 
   -- Null-ls
   use {
