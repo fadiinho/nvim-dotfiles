@@ -18,6 +18,16 @@ maps.n["<C-a>"] = {
   { desc = "Select all buffer" },
 }
 
+maps.n["<leader>d"] = {
+  '"_d',
+  { desc = "Delete things and send to void register" },
+}
+
+maps.v["<leader>d"] = {
+  '"_d',
+  { desc = "Delete things and send to void register" },
+}
+
 -- Duplicate lines
 
 maps.v["<a-d>k"] = {
