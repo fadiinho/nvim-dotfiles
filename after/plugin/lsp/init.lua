@@ -104,6 +104,11 @@ require("lspconfig").html.setup {
   capabilities = capabilities,
 }
 
+require("lspconfig").cssls.setup {
+  on_attach = disable_formatting_and_attach,
+  capabilities = capabilities,
+}
+
 require("lspconfig").sumneko_lua.setup {
   on_attach = function(client, bufnr)
     disable_formatting_and_attach(client, bufnr)
