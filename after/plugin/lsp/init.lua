@@ -114,6 +114,11 @@ require("lspconfig").svelte.setup {
   capabilities = capabilities,
 }
 
+require("lspconfig").tailwindcss.setup {
+  on_attach = disable_formatting_and_attach,
+  capabilities = capabilities,
+}
+
 require("lspconfig").sumneko_lua.setup {
   on_attach = function(client, bufnr)
     disable_formatting_and_attach(client, bufnr)
