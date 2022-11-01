@@ -28,6 +28,11 @@ maps.v["<leader>d"] = {
   { desc = "Delete things and send to void register" },
 }
 
+maps.n["<leader>j"] = {
+  utils.next_color_scheme,
+  { desc = "Change to next colorscheme" },
+}
+
 -- Duplicate lines
 
 maps.v["<a-d>k"] = {
