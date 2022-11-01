@@ -19,9 +19,16 @@ return require("packer").startup(function(use)
     },
   }
 
+  -- base16-bright
+  -- base16-pico
+  -- base16-summerfruit-dark
+  -- base16-synth-midnight-dark
+  -- base16-pop (current)
+
   -- Theme
   use "techygrrrl/techygrrrl-cmyk-colourrrs-neovim"
   use "thedenisnikulin/vim-cyberpunk"
+  use "fnune/base16-vim"
 
   -- LSP
   use "williamboman/mason.nvim"

@@ -9,7 +9,7 @@ autocmd("TextYankPost", {
   pattern = "*",
   callback = function()
     vim.highlight.on_yank {
-      higroup = "FloatBorder",
+      higroup = "PostYankColor",
       timeout = 50,
     }
   end,
