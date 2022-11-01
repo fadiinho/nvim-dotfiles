@@ -27,6 +27,7 @@ null_ls.setup {
       end,
     },
     null_ls.builtins.formatting.black,
+    null_ls.builtins.diagnostics.eslint,
   },
   on_attach = function(client, bufnr)
     if client.supports_method "textDocument/formatting" then
