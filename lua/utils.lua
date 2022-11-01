@@ -10,7 +10,6 @@ M.set_keymaps = function(maps)
   end
 end
 
-
 M.get_selection = function()
   local selectionStart = vim.fn.line "v"
   local selectionEnd = vim.fn.line "."
@@ -37,7 +36,9 @@ M.insert_lines_down_v = function()
     table.insert(buf, 1, value)
   end
 
-  if buf[1] ~= "" then table.insert(buf, 1, "") end
+  if buf[1] ~= "" then
+    table.insert(buf, 1, "")
+  end
 
   api.nvim_buf_set_lines(0, selection[3], bufLines, true, buf)
   api.nvim_feedkeys(api.nvim_replace_termcodes("<Esc>", true, false, true), "n", true)
@@ -78,7 +79,7 @@ M.insert_lines_up_n = function()
   api.nvim_buf_set_lines(0, cursor - 1, cursor, true, buf)
 end
 
-M.swap_lines = function (up_or_down)
+M.swap_lines = function(up_or_down)
   local cursor = api.nvim_win_get_cursor(0) -- Current cursor position
 
   local options = {} --  I don't have a better name
@@ -88,7 +89,9 @@ M.swap_lines = function (up_or_down)
     options = { cursor[1], cursor[1] + 1 } -- Swap current line down
   end
 
-  if options[1] < 0 or options[2] > vim.api.nvim_buf_line_count(vim.api.nvim_win_get_buf(0)) then return end
+  if options[1] < 0 or options[2] > vim.api.nvim_buf_line_count(vim.api.nvim_win_get_buf(0)) then
+    return
+  end
 
   local currentLine = api.nvim_buf_get_lines(0, cursor[1] - 1, cursor[1], true) -- Get the current cursor line
 
@@ -100,7 +103,7 @@ M.swap_lines = function (up_or_down)
   api.nvim_win_set_cursor(0, { options[1] + 1, options[2] }) -- Set the cursor to the swapped position
 end
 
-M.find_bin_location = function (cmd)
+M.find_bin_location = function(cmd)
   local currentDirectoryPwd = os.getenv "PWD"
 
   local function search(path)
@@ -112,7 +115,9 @@ M.find_bin_location = function (cmd)
 
     local filenames = {}
 
-    if not command then return nil end
+    if not command then
+      return nil
+    end
 
     for filename in command:lines() do
       table.insert(filenames, filename)

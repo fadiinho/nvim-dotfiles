@@ -4,7 +4,7 @@ local settings = {
     completeopt = { "menuone", "noselect" },
     copyindent = true,
     cursorline = true,
-    expandtab= true,
+    expandtab = true,
     fileencoding = "utf-8",
     fillchars = { eob = " " },
     mouse = "a",
@@ -21,11 +21,11 @@ local settings = {
     termguicolors = true,
     undofile = true,
     timeoutlen = 300,
-    wrap = false
+    wrap = false,
   },
   g = {
-    mapleader = " "
-  }
+    mapleader = " ",
+  },
 }
 
 for settingsKey in pairs(settings) do
