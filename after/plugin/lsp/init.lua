@@ -58,7 +58,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
 end
 
-local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 -- local formatting_callback = function(client, bufnr)
 --   vim.keymap.set("n", "<leader>f", function()
