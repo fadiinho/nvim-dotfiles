@@ -3,7 +3,7 @@ if not status then
   return
 end
 
-local utils = require "utils"
+local utils = require "utils.lsp"
 
 local light_100 = "#E0DDE5"
 local dark_100 = "#221B32"

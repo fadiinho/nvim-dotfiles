@@ -36,6 +36,8 @@ return require("packer").startup(function(use)
   use "neovim/nvim-lspconfig"
   use "onsails/lspkind.nvim"
 
+  use "pantharshit00/vim-prisma"
+
   -- Auto Completion
   use "hrsh7th/cmp-nvim-lsp"
   use "hrsh7th/cmp-buffer"
@@ -129,5 +131,16 @@ return require("packer").startup(function(use)
 
   use {
     "xiyaowong/nvim-transparent",
+  }
+
+  use {
+    "andweeb/presence.nvim",
+  }
+
+  use {
+    "sheerun/vim-polyglot",
+    config = function()
+      require("sheerun/vim-polyglot").setup()
+    end,
   }
 end)

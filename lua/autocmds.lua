@@ -14,3 +14,10 @@ autocmd("TextYankPost", {
     }
   end,
 })
+
+autocmd("BufRead", {
+  pattern = "*.cs",
+  callback = function()
+    vim.cmd [[ TSEnable highlight ]]
+  end,
+})

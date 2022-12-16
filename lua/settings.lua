@@ -35,4 +35,3 @@ for settingsKey in pairs(settings) do
 end
 
 vim.cmd [[colorscheme base16-pop]]
-vim.api.nvim_set_hl(0, "PostYankColor", { bg = "#00ff00" })

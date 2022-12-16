@@ -1,4 +1,5 @@
 local utils = require "utils"
+local lines = require "utils.lines"
 
 local maps = { n = {}, v = {}, t = {} }
 
@@ -28,30 +29,40 @@ maps.v["<leader>d"] = {
   { desc = "Delete things and send to void register" },
 }
 
-maps.n["<leader>j"] = {
-  utils.next_color_scheme,
-  { desc = "Change to next colorscheme" },
+maps.n["<leader>p"] = {
+  '"_dP',
+  { desc = "Delete stuff, send to void register, then paste other stuff" },
+}
+
+maps.v["<leader>p"] = {
+  '"_dP',
+  { desc = "Delete stuff, send to void register, then paste other stuff" },
+}
+
+maps.v["<leader>rw"] = {
+  utils.replace,
+  { desc = "Open a window" },
 }
 
 -- Duplicate lines
 
 maps.v["<a-d>k"] = {
-  utils.insert_lines_up_v,
+  lines.insert_lines_up_v,
   { desc = "Duplicate selection up" },
 }
 
 maps.v["<a-d>j"] = {
-  utils.insert_lines_down_v,
+  lines.insert_lines_down_v,
   { desc = "Duplicate selection down" },
 }
 
 maps.n["<a-d>k"] = {
-  utils.insert_lines_up_n,
+  lines.insert_lines_up_n,
   { desc = "Duplicate line up" },
 }
 
 maps.n["<a-d>j"] = {
-  utils.insert_lines_down_n,
+  lines.insert_lines_down_n,
   { desc = "Duplicate line down" },
 }
 
@@ -59,14 +70,14 @@ maps.n["<a-d>j"] = {
 
 maps.n["<a-k>"] = {
   function()
-    utils.swap_lines(1)
+    lines.swap_lines(1)
   end, -- UP
   { desc = "Swap current line with the line above" },
 }
 
 maps.n["<a-j>"] = {
   function()
-    utils.swap_lines(2)
+    lines.swap_lines(2)
   end, -- DOWN
   { desc = "Swap current line with the line below" },
 }
