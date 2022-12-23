@@ -14,11 +14,6 @@ maps.n["<leader>q"] = {
   { desc = "Quit buffer" },
 }
 
-maps.n["<C-a>"] = {
-  "gg<S-v>G",
-  { desc = "Select all buffer" },
-}
-
 maps.n["<leader>d"] = {
   '"_d',
   { desc = "Delete things and send to void register" },
@@ -37,11 +32,6 @@ maps.n["<leader>p"] = {
 maps.v["<leader>p"] = {
   '"_dP',
   { desc = "Delete stuff, send to void register, then paste other stuff" },
-}
-
-maps.v["<leader>rw"] = {
-  utils.replace,
-  { desc = "Open a window" },
 }
 
 -- Duplicate lines
