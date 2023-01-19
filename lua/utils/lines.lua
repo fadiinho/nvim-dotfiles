@@ -2,6 +2,21 @@ local M = {}
 
 local api = vim.api
 
+M.get_selection = function()
+  local selectionStart = vim.fn.line "v"
+  local selectionEnd = vim.fn.line "."
+
+  if selectionStart > selectionEnd then
+    local temp = selectionStart
+    selectionStart = selectionEnd
+    selectionEnd = temp
+  end
+
+  local lines = api.nvim_buf_get_lines(0, selectionStart - 1, selectionEnd, true)
+
+  return { lines, selectionStart, selectionEnd }
+end
+
 M.insert_lines_down_v = function()
   local selection = M.get_selection()
   local bufLines = api.nvim_buf_line_count(0)

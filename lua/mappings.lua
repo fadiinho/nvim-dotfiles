@@ -36,22 +36,12 @@ maps.v["<leader>p"] = {
 
 -- Duplicate lines
 
-maps.v["<a-d>k"] = {
-  lines.insert_lines_up_v,
-  { desc = "Duplicate selection up" },
-}
-
-maps.v["<a-d>j"] = {
+maps.v["<a-d>"] = {
   lines.insert_lines_down_v,
   { desc = "Duplicate selection down" },
 }
 
-maps.n["<a-d>k"] = {
-  lines.insert_lines_up_n,
-  { desc = "Duplicate line up" },
-}
-
-maps.n["<a-d>j"] = {
+maps.n["<a-d>"] = {
   lines.insert_lines_down_n,
   { desc = "Duplicate line down" },
 }

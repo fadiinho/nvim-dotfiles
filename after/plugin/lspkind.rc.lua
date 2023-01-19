@@ -1,4 +1,7 @@
-local status, lspkind = pcall(require, 'lspkind')
+local status, lspkind = pcall(require, "lspkind")
+if not status then
+  return
+end
 
 lspkind.init {
   mode = "symbol",
@@ -18,6 +21,6 @@ lspkind.init {
     Snippet = "",
     String = "𝓐",
     TypeParameter = "",
-    Unit = ""
-  }
+    Unit = "",
+  },
 }

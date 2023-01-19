@@ -163,7 +163,7 @@ local left = {
   spacer { bg = colors.cmyk_black },
 }
 
-local utils = require "cmyk-colourrrs.utils"
+local _utils = require "cmyk-colourrrs.utils"
 
 local middle = {
   { " " },
@@ -172,31 +172,31 @@ local middle = {
     fg = colors.dark_400,
     bg = colors.cmyk_black,
     enabled = function()
-      return utils.tbl_diagnostics_exists { "warn", "info", "hint", "error" }
+      return _utils.tbl_diagnostics_exists { "warn", "info", "hint", "error" }
     end,
   },
   {
     provider = "diagnostic_errors",
     hl = function()
-      return { fg = utils.hl_by_name("DiagnosticError", "foreground"), bg = colors.dark_400 }
+      return { fg = _utils.hl_by_name("DiagnosticError", "foreground"), bg = colors.dark_400 }
     end,
   },
   {
     provider = "diagnostic_warnings",
     hl = function()
-      return { fg = utils.hl_by_name("DiagnosticWarn", "foreground"), bg = colors.dark_400 }
+      return { fg = _utils.hl_by_name("DiagnosticWarn", "foreground"), bg = colors.dark_400 }
     end,
   },
   {
     provider = "diagnostic_hints",
     hl = function()
-      return { fg = utils.hl_by_name("DiagnosticHint", "foreground"), bg = colors.dark_400 }
+      return { fg = _utils.hl_by_name("DiagnosticHint", "foreground"), bg = colors.dark_400 }
     end,
   },
   {
     provider = "diagnostic_info",
     hl = function()
-      return { fg = utils.hl_by_name("DiagnosticInfo", "foreground"), bg = colors.dark_400 }
+      return { fg = _utils.hl_by_name("DiagnosticInfo", "foreground"), bg = colors.dark_400 }
     end,
   },
   spacer {
@@ -204,7 +204,7 @@ local middle = {
     fg = colors.dark_400,
     bg = colors.cmyk_black,
     enabled = function()
-      return utils.tbl_diagnostics_exists { "warn", "info", "hint", "error" }
+      return _utils.tbl_diagnostics_exists { "warn", "info", "hint", "error" }
     end,
   },
   { " " },
@@ -232,6 +232,14 @@ local right = {
   {
     provider = "line_percentage",
     hl = { fg = colors.light_100, bg = colors.cmyk_black },
+    left_sep = " ",
+  },
+  spacer { bg = colors.cmyk_black },
+  spacer(),
+  {
+    provider = function()
+      return os.date "%H:%M"
+    end,
     left_sep = " ",
   },
   spacer { bg = colors.cmyk_black },

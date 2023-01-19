@@ -10,21 +10,6 @@ M.set_keymaps = function(maps)
   end
 end
 
-M.get_selection = function()
-  local selectionStart = vim.fn.line "v"
-  local selectionEnd = vim.fn.line "."
-
-  if selectionStart > selectionEnd then
-    local temp = selectionStart
-    selectionStart = selectionEnd
-    selectionEnd = temp
-  end
-
-  local lines = api.nvim_buf_get_lines(0, selectionStart - 1, selectionEnd, true)
-
-  return { lines, selectionStart, selectionEnd }
-end
-
 M.escape = function()
   api.nvim_feedkeys(api.nvim_replace_termcodes("<Esc>", true, false, true), "n", true)
 end
@@ -145,13 +130,20 @@ M.git_ssh_to_url = function(ssh_url)
   return "https://github.com/" .. url
 end
 
-M.replace = function()
-  local input = vim.fn.input "Word to replace: "
-  local wordUnderCursor = vim.fn.expand "<cword>"
+M.replace = function(target)
+  local value = vim.fn.getreg "/"
+  print(value)
 
-  local cmd = string.format("s/%s/%s/g", wordUnderCursor, input)
+  if value == "" then
+    value = vim.fn.expand "<cword>"
+  end
+
+  print(value)
+  local cmd = string.format("%%s/%s/%s/g", value, target)
+  print(cmd)
   vim.cmd(cmd)
   vim.cmd "noh"
+  vim.fn.setreg("/", "")
   M.escape()
 end
 

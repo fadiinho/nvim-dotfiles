@@ -51,6 +51,8 @@ return require("packer").startup(function(use)
   use "honza/vim-snippets"
 
   use "rafamadriz/friendly-snippets"
+
+  use "folke/which-key.nvim"
   -- Terminal
   use {
     "akinsho/toggleterm.nvim",
@@ -137,10 +139,14 @@ return require("packer").startup(function(use)
     "andweeb/presence.nvim",
   }
 
+  use "MunifTanjim/nui.nvim"
+
   use {
-    "sheerun/vim-polyglot",
-    config = function()
-      require("sheerun/vim-polyglot").setup()
+    "iamcco/markdown-preview.nvim",
+    run = function()
+      vim.fn["mkdp#util#install"]()
     end,
   }
+
+  use "lukas-reineke/indent-blankline.nvim"
 end)
