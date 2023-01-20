@@ -1,5 +1,7 @@
 require "settings"
+
+require "lazy_config"
+
 require "mappings"
-require "plugins"
 require "autocmds"
 require "my_highlights"
