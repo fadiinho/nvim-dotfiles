@@ -22,7 +22,7 @@ require("nvim-treesitter.configs").setup {
   },
   auto_install = true,
   highlight = {
-    enable = false,
+    enable = true,
   },
   context_commentstring = {
     enable = true,
