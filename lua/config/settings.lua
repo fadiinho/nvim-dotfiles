@@ -7,7 +7,6 @@ local settings = {
     fileencoding = "utf-8",
     fillchars = { eob = " " },
     list = true,
-    -- listchars = " ,,,nbsp:",
     listchars = "tab:▷ ,trail:·",
     mouse = "a",
     number = true,
@@ -41,4 +40,4 @@ for settingsKey in pairs(settings) do
   end
 end
 
-vim.cmd [[colorscheme base16-pop]]
+-- vim.cmd [[colorscheme base16-pop]]

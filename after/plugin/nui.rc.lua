@@ -1,3 +1,6 @@
+local status, _ = pcall(require, "nui")
+if not status then return end
+
 local utils = require "utils.init"
 local Input = require "nui.input"
 
