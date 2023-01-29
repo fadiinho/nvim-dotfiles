@@ -111,7 +111,7 @@ return {
     "feline-nvim/feline.nvim",
     dependencies = { "lewis6991/gitsigns.nvim" },
   },
-  --
+
   -- Color Highlight #f0f0f0
   {
     "norcalli/nvim-colorizer.lua",
@@ -120,12 +120,9 @@ return {
   {
     "xiyaowong/nvim-transparent",
   },
-  --
-  --  use {
-  --    "andweeb/presence.nvim",
-  --  }
-  --
-  --
+
+  "andweeb/presence.nvim",
+
   {
     "iamcco/markdown-preview.nvim",
     config = function()
