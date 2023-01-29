@@ -1,7 +1,5 @@
-require "settings"
-
-require "lazy_config"
-
-require "mappings"
-require "autocmds"
-require "my_highlights"
+require "config.settings"
+require "config.lazy"
+require "config.keymaps"
+require "config.autocmds"
+require "config.my_highlights"
