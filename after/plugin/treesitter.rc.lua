@@ -29,9 +29,7 @@ require("nvim-treesitter.configs").setup {
     enable_autocmd = false,
   },
   rainbow = {
-    enable = true,
-    disable = { "html" },
-    extended_mode = false,
+    enable = false,
   },
   autopairs = {
     enable = true,
