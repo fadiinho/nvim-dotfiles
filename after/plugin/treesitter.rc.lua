@@ -5,7 +5,6 @@ end
 
 require("nvim-treesitter.configs").setup {
   ensure_installed = {
-    "lua",
     "python",
     "rust",
     "typescript",
@@ -20,7 +19,7 @@ require("nvim-treesitter.configs").setup {
     "comment",
     "bash",
   },
-  auto_install = true,
+  auto_install = false,
   highlight = {
     enable = true,
   },
