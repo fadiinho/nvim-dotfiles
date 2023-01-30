@@ -21,3 +21,18 @@ autocmd("BufRead", {
     vim.cmd [[ TSEnable highlight ]]
   end,
 })
+
+autocmd("BufEnter", {
+  pattern = { "*.dart", "*.lua" },
+  callback = function()
+    vim.opt.shiftwidth = 2
+    vim.opt.tabstop = 2
+  end,
+})
+
+autocmd("BufWritePre", {
+  pattern = { "*.dart" },
+  callback = function()
+    vim.cmd "silent! !kill -SIGUSR1 $(pgrep -f '[f]lutter_tool.*run')"
+  end,
+})

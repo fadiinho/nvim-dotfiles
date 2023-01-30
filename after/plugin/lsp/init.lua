@@ -153,3 +153,25 @@ require("lspconfig").sumneko_lua.setup {
   },
   capabilities = capabilities,
 }
+
+require("lspconfig").dartls.setup {
+  filetype = { "dart" },
+  cmd = { "dart", "language-server", "--protocol=lsp" },
+  on_attach = function(client, bufnr)
+    disable_formatting_and_attach(client, bufnr)
+  end,
+  capabilities = capabilities,
+  init_options = {
+    closingLabels = true,
+    flutterOutline = true,
+    onlyAnalyzeProjectsWithOpenFiles = true,
+    outline = true,
+    suggestFromUnimportedLibraries = true,
+  },
+  settings = {
+    dart = {
+      completeFunctionCalls = true,
+      showTodos = true,
+    },
+  },
+}
