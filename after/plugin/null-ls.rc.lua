@@ -3,8 +3,29 @@ if not status then
   return
 end
 
--- For ez access: https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md
+local contains = require("utils").contains
+
+local NO_AUTO_FORMAT = { "dart" }
+
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+local function _on_attach(client, bufnr)
+  if client.supports_method "textDocument/formatting" then
+    if contains(NO_AUTO_FORMAT, vim.bo.filetype) then
+      return
+    end
+
+    vim.api.nvim_clear_autocmds { group = augroup, buffer = bufnr }
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      group = augroup,
+      buffer = bufnr,
+      callback = function()
+        vim.lsp.buf.format()
+      end,
+    })
+  end
+end
+
+-- For ez access: https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md
 null_ls.setup {
   sources = {
     null_ls.builtins.formatting.stylua,
@@ -27,17 +48,7 @@ null_ls.setup {
       end,
     },
     null_ls.builtins.formatting.black,
+    null_ls.builtins.formatting.dart_format,
   },
-  on_attach = function(client, bufnr)
-    if client.supports_method "textDocument/formatting" then
-      vim.api.nvim_clear_autocmds { group = augroup, buffer = bufnr }
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        group = augroup,
-        buffer = bufnr,
-        callback = function()
-          vim.lsp.buf.format()
-        end,
-      })
-    end
-  end,
+  on_attach = _on_attach,
 }

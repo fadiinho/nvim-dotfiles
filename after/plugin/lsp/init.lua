@@ -41,31 +41,24 @@ vim.keymap.set("n", "<leader>ll", vim.diagnostic.setloclist, opts)
 local on_attach = function(_, bufnr)
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
-  local bufopts = { noremap = true, silent = true, buffer = bufnr }
-  vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
-  vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
-  vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
-  vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
-  vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
-  vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, bufopts)
-  -- vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
-  vim.keymap.set("n", "<leader>wl", function()
-    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, bufopts)
-  vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, bufopts)
-  vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, bufopts)
-  vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, bufopts)
-  vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
+  opts.buffer = bufnr
+
+  vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+  vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+  vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+  vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+  vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
+  vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts)
+
+  vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, opts)
+  vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, opts)
+  vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, opts)
+  vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+
+  vim.keymap.set("n", "<leader>f", vim.lsp.format(), opts)
 end
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
-
--- local formatting_callback = function(client, bufnr)
---   vim.keymap.set("n", "<leader>f", function()
---     local params = vim.lsp.util.make_formatting_params {}
---     client.request("textDocument/formatting", params, nil, bufnr)
---   end, { buffer = bufnr })
--- end
 
 local function disable_formatting(client)
   client.server_capabilities.document_formatting = false
