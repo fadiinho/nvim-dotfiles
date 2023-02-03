@@ -55,7 +55,7 @@ local on_attach = function(_, bufnr)
   vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, opts)
   vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
 
-  vim.keymap.set("n", "<leader>f", vim.lsp.format(), opts)
+  vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, opts)
 end
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
