@@ -89,6 +89,13 @@ require("lspconfig").tsserver.setup {
 require("lspconfig").rust_analyzer.setup {
   on_attach = disable_formatting_and_attach,
   capabilities = capabilities,
+  settings = {
+    ["rust-analyzer"] = {
+      diagnostics = {
+        disabled = { "unresolved-proc-macro" },
+      },
+    },
+  },
 }
 
 require("lspconfig").html.setup {
