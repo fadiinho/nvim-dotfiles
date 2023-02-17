@@ -129,8 +129,8 @@ return {
 
   {
     "iamcco/markdown-preview.nvim",
-    event = "VeryLazy",
-    config = function()
+    -- event = "VeryLazy",
+    build = function()
       vim.fn["mkdp#util#install"]()
     end,
   },
