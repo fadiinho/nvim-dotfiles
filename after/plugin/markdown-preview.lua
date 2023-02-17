@@ -1,9 +1,3 @@
-local status, _ = pcall(require, "markdown-preview")
-
-if not status then
-  return
-end
-
 vim.api.nvim_exec(
   [[
   function OpenMarkdownPreview (url)
