@@ -36,3 +36,14 @@ autocmd("BufWritePre", {
     vim.cmd "silent! !kill -SIGUSR1 $(pgrep -f '[f]lutter_tool.*run')"
   end,
 })
+
+autocmd("FileType", {
+  pattern = "*",
+  callback = function()
+    local ignored = { "neo-tree", "toggleterm", "TelescopePrompt", "help", "lazy", "mason" }
+    if vim.tbl_contains(ignored, vim.bo.filetype) then
+      return
+    end
+    vim.cmd [[match TrailinWhiteSpace /\s\+$/]]
+  end,
+})

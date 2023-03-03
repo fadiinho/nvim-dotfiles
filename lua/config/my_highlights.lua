@@ -7,5 +7,3 @@ local highlights = {
 for group, attrs in pairs(highlights) do
   vim.api.nvim_set_hl(0, group, attrs)
 end
-
-vim.cmd [[match TrailinWhiteSpace /\s\+$/]]
