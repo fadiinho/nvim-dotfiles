@@ -15,6 +15,7 @@ local settings = {
     scrolloff = 8,
     tabstop = 2,
     shiftwidth = 2,
+    smartindent = true,
     expandtab = true,
     signcolumn = "yes",
     smartcase = true,
