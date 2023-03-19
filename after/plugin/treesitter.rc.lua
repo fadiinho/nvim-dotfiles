@@ -36,6 +36,6 @@ require("nvim-treesitter.configs").setup {
   autotag = {
     enable = true,
   },
-  indent = { enable = false },
+  indent = { enable = true },
   incremental_selection = true,
 }
