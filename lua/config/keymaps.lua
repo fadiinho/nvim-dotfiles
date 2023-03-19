@@ -48,18 +48,43 @@ maps.n["<a-d>"] = {
 
 -- Swap lines
 
+maps.v["<a-k>"] = {
+  ":m '<-2<CR>gv=gv",
+  { desc = "Swap current line with the line above" },
+}
+
+maps.v["<a-j>"] = {
+  ":m '>+1<CR>gv=gv",
+  { desc = "Swap current line with the line below" },
+}
+
 maps.n["<a-k>"] = {
-  function()
-    lines.swap_lines(1)
-  end, -- UP
+  ":m -2<CR>==",
   { desc = "Swap current line with the line above" },
 }
 
 maps.n["<a-j>"] = {
-  function()
-    lines.swap_lines(2)
-  end, -- DOWN
+  ":m +1<CR>==",
   { desc = "Swap current line with the line below" },
+}
+
+-- maps.n["<a-k>"] = {
+--   function()
+--     lines.swap_lines(1)
+--   end, -- UP
+--   { desc = "Swap current line with the line above" },
+-- }
+--
+-- maps.n["<a-j>"] = {
+--   function()
+--     lines.swap_lines(2)
+--   end, -- DOWN
+--   { desc = "Swap current line with the line below" },
+-- }
+
+maps.n["<leader>s"] = {
+  [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+  { desc = "Replace the current word" },
 }
 
 -- Indentation
