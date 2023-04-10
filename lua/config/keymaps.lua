@@ -46,6 +46,10 @@ maps.n["<a-d>"] = {
   { desc = "Duplicate line down" },
 }
 
+maps.v["K"] = {
+  "<nop>",
+}
+
 -- Swap lines
 
 maps.v["<a-k>"] = {
