@@ -114,11 +114,11 @@ require("lspconfig").svelte.setup {
   capabilities = capabilities,
 }
 
-require("lspconfig").tailwindcss.setup {
-  on_attach = disable_formatting_and_attach,
-  capabilities = capabilities,
-  filetypes = { "javascriptreact", "typescriptreact", "html", "css" },
-}
+-- require("lspconfig").tailwindcss.setup {
+--   on_attach = disable_formatting_and_attach,
+--   capabilities = capabilities,
+--   filetypes = { "javascriptreact", "typescriptreact", "html", "css" },
+-- }
 
 require("lspconfig").csharp_ls.setup {
   on_attach = disable_formatting_and_attach,
@@ -174,4 +174,18 @@ require("lspconfig").dartls.setup {
       showTodos = true,
     },
   },
+}
+
+require("lspconfig").clangd.setup {
+  on_attach = function(client, bufnr)
+    disable_formatting_and_attach(client, bufnr)
+  end,
+  capabilities = capabilities,
+}
+
+require("lspconfig").volar.setup {
+  on_attach = function(client, bufnr)
+    disable_formatting_and_attach(client, bufnr)
+  end,
+  capabilities = capabilities,
 }
