@@ -40,21 +40,6 @@ return {
 
   -- Auto Completion
   {
-    "hrsh7th/nvim-cmp",
-    dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
-      "hrsh7th/cmp-cmdline",
-
-      "saadparwaiz1/cmp_luasnip",
-
-      "honza/vim-snippets",
-      "rafamadriz/friendly-snippets",
-    },
-  },
-
-  {
     "L3MON4D3/LuaSnip",
     event = "VeryLazy",
   },
@@ -86,10 +71,6 @@ return {
       "nvim-treesitter",
     },
   },
-
-  -- Autopairs
-  "windwp/nvim-autopairs",
-  "windwp/nvim-ts-autotag",
 
   -- Null-ls
   {
@@ -134,6 +115,5 @@ return {
       vim.fn["mkdp#util#install"]()
     end,
   },
-
   --  use "lukas-reineke/indent-blankline.nvim"
 }
