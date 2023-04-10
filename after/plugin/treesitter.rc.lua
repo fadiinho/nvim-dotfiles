@@ -31,7 +31,7 @@ require("nvim-treesitter.configs").setup {
     enable = false,
   },
   autopairs = {
-    enable = true,
+    enable = false,
   },
   autotag = {
     enable = true,
