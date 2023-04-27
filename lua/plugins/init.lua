@@ -106,8 +106,6 @@ return {
     "xiyaowong/nvim-transparent",
   },
 
-  "andweeb/presence.nvim",
-
   {
     "iamcco/markdown-preview.nvim",
     -- event = "VeryLazy",
