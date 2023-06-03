@@ -150,13 +150,10 @@ end
 --- @param pattern string pattern to match
 --- @return boolean
 M.has_file = function(pattern)
-  local file_exists = vim.fs.find(pattern)
+  local filename = vim.loop.cwd() .. "/" .. pattern
+  local file_exists = vim.loop.fs_stat(filename)
 
-  if vim.tbl_count(file_exists) >= 1 then
-    return true
-  end
-
-  return false
+  return file_exists ~= nil
 end
 
 M.contains = function(table, element)

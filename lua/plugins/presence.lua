@@ -20,7 +20,7 @@ return {
 
         table.insert(_buttons, { label = "My Github", url = "https://github.com/fadiinho" })
 
-        local shouldAddUrl = utils.has_file ".presence_ignore"
+        local shouldAddUrl = utils.has_file ".repo_presence_ignore"
 
         if repo_url and not shouldAddUrl then
           table.insert(_buttons, { label = "Take a look at this repo", url = utils.git_ssh_to_url(repo_url) })

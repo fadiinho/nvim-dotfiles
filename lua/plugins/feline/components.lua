@@ -1,5 +1,5 @@
-local utils = require "lua.plugins.feline.utils"
-local lsp_utils = require "lua.utils.lsp"
+local utils = require "plugins.feline.utils"
+local lsp_utils = require "utils.lsp"
 
 local left = {
   utils.get_vi_mode(),

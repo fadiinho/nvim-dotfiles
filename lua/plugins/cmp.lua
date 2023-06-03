@@ -15,7 +15,7 @@ return {
   init = function()
     local cmp = require "cmp"
     local luasnip = require "luasnip"
-    local icons = require "lua.utils.icons"
+    local icons = require "utils.icons"
     if cmp == nil then
       return
     end

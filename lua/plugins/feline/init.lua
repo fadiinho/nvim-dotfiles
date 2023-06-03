@@ -1,5 +1,5 @@
-local colors = require("lua.plugins.feline.utils").colors
-local components = require "lua.plugins.feline.components"
+local colors = require("plugins.feline.utils").colors
+local components = require "plugins.feline.components"
 
 return {
   "feline-nvim/feline.nvim",
