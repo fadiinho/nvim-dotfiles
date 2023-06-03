@@ -147,6 +147,18 @@ M.replace = function(target)
   M.escape()
 end
 
+--- @param pattern string pattern to match
+--- @return boolean
+M.has_file = function(pattern)
+  local file_exists = vim.fs.find(pattern)
+
+  if vim.tbl_count(file_exists) >= 1 then
+    return true
+  end
+
+  return false
+end
+
 M.contains = function(table, element)
   for _, value in pairs(table) do
     if value == element then

@@ -3,7 +3,7 @@ return {
   init = function()
     local presence = require "presence"
 
-    local git_ssh_to_url = require("utils").git_ssh_to_url
+    local utils = require "utils"
 
     presence:setup {
       -- General options
@@ -12,16 +12,20 @@ return {
       main_image = "neovim", -- Main image display (either "neovim" or "file")
       client_id = "793271441293967371", -- Use your own Discord application client id (not recommended)
       log_level = nil, -- Log messages at or above this level (one of the following: "debug", "info", "warn", "error")
-      debounce_timeout = 10, -- Number of seconds to debounce events (or calls to `:lua package.loaded.presence:update(<filename>, true)`)
+      debounce_timeout = 1, -- Number of seconds to debounce events (or calls to `:lua package.loaded.presence:update(<filename>, true)`)
       enable_line_number = true, -- Displays the current line number instead of the current project
-      blacklist = { ".tmp" }, -- A list of strings or Lua patterns that disable Rich Presence if the current file name, path, or workspace matches
+      blacklist = { ".*%.tmp" }, -- A list of strings or Lua patterns that disable Rich Presence if the current file name, path, or workspace matches
       buttons = function(_, repo_url)
         local _buttons = {}
 
         table.insert(_buttons, { label = "My Github", url = "https://github.com/fadiinho" })
 
-        if repo_url then
-          table.insert(_buttons, { label = "This repo", url = git_ssh_to_url(repo_url) })
+        local shouldAddUrl = utils.has_file ".presence_ignore"
+
+        if repo_url and not shouldAddUrl then
+          table.insert(_buttons, { label = "Take a look at this repo", url = utils.git_ssh_to_url(repo_url) })
+        else
+          table.insert(_buttons, { label = "Don't click here shhhh", url = "http://pudim.com.br" })
         end
 
         return _buttons

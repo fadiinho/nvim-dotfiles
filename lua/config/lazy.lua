@@ -19,4 +19,17 @@ require("lazy").setup {
     lazy = true,
     version = false,
   },
+  dev = {
+    path = "/mnt/archives/projects",
+  },
+  change_detection = {
+    notify = false,
+  },
+  performance = {
+    rtp = {
+      disabled_plugins = {
+        "netrwPlugin",
+      },
+    },
+  },
 }

@@ -57,4 +57,38 @@ M.tbl_diagnostics_exists = function(diagnostics)
   return exists
 end
 
+-- Source: https://github.com/AstroNvim/AstroNvim/blob/main/lua/core/status.lua
+M.lsp_client_names = function(expand_null_ls)
+  return function()
+    local buf_client_names = {}
+    for _, client in pairs(vim.lsp.buf_get_clients(0)) do
+      if client.name == "null-ls" and expand_null_ls then
+        vim.list_extend(buf_client_names, M.null_ls_sources(vim.bo.filetype, "FORMATTING"))
+        vim.list_extend(buf_client_names, M.null_ls_sources(vim.bo.filetype, "DIAGNOSTICS"))
+      else
+        table.insert(buf_client_names, client.name)
+      end
+    end
+    return table.concat(buf_client_names, ", ")
+  end
+end
+
+-- Source: https://github.com/AstroNvim/AstroNvim/blob/main/lua/core/status.lua
+
+M.lsp_progress = function()
+  if #vim.lsp.buf_get_clients() == 0 then
+    return ""
+  end
+
+  local lsp = vim.lsp.util.get_progress_messages()[1]
+  if lsp then
+    local name = lsp.name or ""
+    local msg = lsp.message or ""
+    local percentage = lsp.percentage or 0
+    local title = lsp.title or ""
+    return string.format(" %%<%s: %s %s (%s%%%%) ", name, title, msg, percentage)
+  end
+  return ""
+end
+
 return M

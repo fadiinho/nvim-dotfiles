@@ -11,27 +11,26 @@ return {
     "honza/vim-snippets",
     "rafamadriz/friendly-snippets",
   },
+  lazy = false,
   init = function()
     local cmp = require "cmp"
     local luasnip = require "luasnip"
-    local lspkind = require "lspkind"
+    local icons = require "lua.utils.icons"
+    if cmp == nil then
+      return
+    end
 
     require("luasnip.loaders.from_snipmate").lazy_load()
 
-    -- local function has_words_before()
-    --   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-    --   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match "%s" == nil
-    -- end
-
     cmp.setup {
       formatting = {
-        format = lspkind.cmp_format {
-          mode = "symbol",
-          maxwidth = 50,
-          before = function(_, vim_item)
-            return vim_item
-          end,
-        },
+        format = function(_, item)
+          if icons[item.kind] then
+            item.kind = icons[item.kind]
+          end
+
+          return item
+        end,
       },
       snippet = {
         expand = function(args)

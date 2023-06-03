@@ -34,6 +34,18 @@ maps.v["<leader>p"] = {
   { desc = "Delete stuff, send to void register, then paste other stuff" },
 }
 
+-- Git conflict
+
+maps.n["co"] = { "<cmd>GitConflictChooseOurs<cr>" }
+maps.n["ct"] = { "<cmd>GitConflictChooseTheirs<cr>" }
+maps.n["cb"] = { "<cmd>GitConflictChooseBoth<cr>" }
+maps.n["c0"] = { "<cmd>GitConflictChooseNone<cr>" }
+maps.n["cq"] = { "<cmd>GitConflictListQf<cr>" }
+maps.n["]x"] = { "<cmd>GitConflictPrevConflict<cr>" }
+maps.n["[x"] = { "<cmd>GitConflictNextConflict<cr>" }
+
+maps.n["<leader>gg"] = { ":Git<cr>" }
+
 -- Duplicate lines
 
 maps.v["<a-d>"] = {
