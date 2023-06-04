@@ -1,6 +1,6 @@
 return {
   "stevearc/dressing.nvim",
-  event = "VimEnter",
+  event = "VeryLazy",
   init = function()
     require("dressing").setup {
       input = {
