@@ -40,7 +40,8 @@ autocmd("BufWritePre", {
 autocmd("FileType", {
   pattern = "*",
   callback = function()
-    local ignored = { "neo-tree", "toggleterm", "TelescopePrompt", "help", "lazy", "mason", "lspinfo", "null-ls-info" }
+    local ignored =
+    { "neo-tree", "toggleterm", "TelescopePrompt", "help", "lazy", "mason", "lspinfo", "null-ls-info", "fugitive" }
     if vim.tbl_contains(ignored, vim.bo.filetype) then
       return
     end
